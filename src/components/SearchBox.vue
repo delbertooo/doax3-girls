@@ -56,9 +56,10 @@ export default defineComponent({
     items: {
       type: Array,
       required: true
-    }
+    },
+    initialValue: { }
   },
-  setup (props) {
+  setup (props, { emit }) {
     const fullOptions = props.items.map(x => ({
       label: x.name,
       value: x.value,
@@ -66,6 +67,10 @@ export default defineComponent({
     }))
     const options = ref(fullOptions)
     const model = ref(null)
+    if (props.initialValue != null) {
+      model.value = fullOptions.find(x => x.value === props.initialValue)?.value
+      if (model.value) emit('onSelect', model.value)
+    }
     return {
       model,
       fullOptions,

@@ -19,7 +19,7 @@
 
         <q-space />
 
-        <search-box class="col q-mx-md ML__toolbar-input" :items="seachItems" @on-select="select($event)"/>
+        <search-box class="col q-mx-md ML__toolbar-input" :items="seachItems" :initialValue="'girl:Leifang'" @on-select="select($event)"/>
 
         <q-space />
 
